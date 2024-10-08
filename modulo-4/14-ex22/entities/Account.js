@@ -5,10 +5,10 @@ const Transfer = require("./Transfer")
 module.exports = class Account {
     #balance = 0
     constructor(email) {
+        this.owner = email
         this.deposits = []
         this.loans = []
         this.transfers = []
-        this.owner = email
     }
 
     get balance() {

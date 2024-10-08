@@ -7,16 +7,16 @@ module.exports = class Loan {
         this.loanValue = loanValue
         this.createDate = createDate
         this.installmentsNumber = installmentsNumber
-        this.installments = this.calcInstallments(installmentsNumber, loanValue)
+        this.installments = this.calcInstallments(installmentsNumber)
     }
 
     static get interestRate() {
-        return this.#interestRate
+        return Loan.#interestRate
     }
 
     static set interestRate(value) {
         if (typeof value === 'number') {
-            this.#interestRate = value
+            Loan.#interestRate = value
         } else {
             throw new Error('INVALID VALUE! [must be a number]')
         }

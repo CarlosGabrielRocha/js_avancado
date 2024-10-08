@@ -3,10 +3,10 @@ const User = require("./User")
 
 module.exports = class App {
 
-    static users = []
+    static #users = []
 
     static findUser(userEmail) {
-        return App.users.find(user => user.email === userEmail)
+        return App.#users.find(user => user.email === userEmail)
     }
 
     static newUser(fullName, email, password) {
@@ -15,7 +15,7 @@ module.exports = class App {
 
         if (!emailExists && password.length >= 6) {
             const newUser = new User(fullName, email, password)
-            App.users.push(newUser)
+            App.#users.push(newUser)
             return newUser
         } else if (emailExists) {
             throw new Error('The email is already being used by someone else!')
@@ -26,21 +26,29 @@ module.exports = class App {
 
     static changePassword(email, currentPassword, newPassword) {
         const user = App.findUser(email)
-        user.changePassword(currentPassword, newPassword)
+        if (user) {
+            user.changePassword(currentPassword, newPassword)
+        } else {
+            throw new Error(`The email is not registered`)
+        }       
     }
 
     static newDeposit(depositValue, userEmail) {
         const user = App.findUser(userEmail)
-        user.account.newDeposit(depositValue)
+        if (user) {
+            user.account.newDeposit(depositValue)
+        } else {
+            throw new Error(`The email is not registered`)
+        }
     }
 
-    static newTransfer(sender, beneficiary, transferValue) {
-        const senderUser = App.findUser(sender.email)
-        const beneficiaryUser = App.findUser(beneficiary.email)
+    static newTransfer(senderEmail, beneficiaryEmail, transferValue) {
+        const senderUser = App.findUser(senderEmail)
+        const beneficiaryUser = App.findUser(beneficiaryEmail)
 
         if (senderUser && beneficiaryUser) {
-            senderUser.account.newTransfer(sender, beneficiary, transferValue)
-            beneficiaryUser.account.newTransfer(sender, beneficiary, transferValue)
+            senderUser.account.newTransfer(senderUser, beneficiaryUser, transferValue)
+            beneficiaryUser.account.newTransfer(senderUser, beneficiaryUser, transferValue)
         } else if (!senderUser) {
             throw new Error(`The sender's email is not registered`)
         } else if (!beneficiaryUser) {
@@ -50,12 +58,21 @@ module.exports = class App {
 
     static newLoan(loanValue, installmentsNumber, userEmail) {
         const user = App.findUser(userEmail)
-        user.account.newLoan(loanValue, installmentsNumber)
+        if (user) {
+            user.account.newLoan(loanValue, installmentsNumber)
+        } else {
+            throw new Error(`The email is not registered`)
+        }   
     }
 
     static payInstallment(installmentNumber, loanNumber, userEmail) {
         const user = App.findUser(userEmail)
-        user.account.payInstallment(installmentNumber, loanNumber)
+
+        if (user) {
+            user.account.payInstallment(installmentNumber, loanNumber)
+        } else {
+            throw new Error(`The email is not registered`)
+        } 
     }
 
     static changeInterestRate(percentage) {
