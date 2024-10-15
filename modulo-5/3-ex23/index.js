@@ -20,7 +20,7 @@ function verifyName(name) {
 }
 
 function verifyEmail(email) {
-    const regex = /^[a-z\d\_]{2,}\@[a-z]{2,}\.[a-z]{2,63}$/i
+    const regex = /^[a-z\d\_]{2,}@[a-z]{2,}\.[a-z]{2,63}$/i
     const validEmail = regex.test(email)
     if (!validEmail) {
         throw new Error('Invalid email')
