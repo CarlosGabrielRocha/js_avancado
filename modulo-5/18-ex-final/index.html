@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de finanças</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="src/index.js" type="module" defer></script>
+</head>
+<body>
+   <header>
+        <img src="midia/exit_app.svg" alt="Sair da aplicação">
+        <h1>ita</h1>
+        <img src="midia/notification.svg" alt="Notificações">
+   </header> 
+   <main>
+    <section id="options">
+
+        <section id="profile-opt">
+            <div id="profile">
+                <div><img src="midia/person.svg" alt="Foto de perfil"></div>
+                <span>Usuário</span>
+            </div>
+            <p>Acessar Perfil <img src="midia/arrow.svg" alt="Seta"></p>
+        </section>
+
+        <section id="balance-opt">
+            <div id="balance-container">
+                <p>Seu Saldo</p>
+                <div>
+                    <span id="balance">R$: 0.00</span>
+                    <img src="midia/visibility.svg" alt="Visibilidade do saldo" id="balance-visibility" data-visibility="on">
+                </div>
+                <p>Rendimentos e Metas</p>
+            </div>
+            <div id="transaction-container">
+                <h2>Nova transação</h2>
+                    <form action="http://localhost:3000/transactions" method="POST">
+                        <div>
+                            <label for="name">Nome:</label>
+                            <input type="text" name="name" id="name" value="De: ">
+                        </div>
+                        <div>
+                            <label for="value">Valor:</label>
+                            <input type="text" name="value" id="value" maxlength="10" autocomplete="off">
+                        </div>
+                        <button type="submit">Enviar</button>
+                    </form>
+            </div>
+        </section>
+
+    </section>
+
+    <section id="transactions">
+        
+    </section>
+
+   </main>
+
+   <footer>
+        <span>Desenvolvido por Carlos Gabriel</span>
+   </footer>
+
+</body>
+</html>

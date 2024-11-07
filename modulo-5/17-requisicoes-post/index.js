@@ -34,9 +34,9 @@ form.addEventListener('submit', async (ev) => {
     ev.preventDefault()
 
     const articleData = {
-       title: document.querySelector("#title").value,
-       author: document.querySelector("#author").value,
-       content: document.querySelector("#content").value
+        title: document.querySelector("#title").value,
+        author: document.querySelector("#author").value,
+        content: document.querySelector("#content").value
     }
 
     const response = await fetch('http://localhost:3000/articles', {
@@ -51,5 +51,5 @@ form.addEventListener('submit', async (ev) => {
     form.reset()
     renderArticle(savedArticle)
     console.log(savedArticle)
-})
+}) 
 

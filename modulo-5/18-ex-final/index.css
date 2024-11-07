@@ -1,0 +1,267 @@
+@font-face {
+    font-family: 'raleaway';
+    src: url('fonts/raleaway.ttf') format('truetype');
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+:root {
+    --primary-color: #2B384B;
+    --secondary-color: #ffffff;
+    --highlight-color1: #EE6A10;
+    --highlight-color2: #F45C3C;
+    --highlight-color3: #FC5175;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vh;
+    padding: 0px 5px 0px 5px;
+    background-color: #242f3f;
+}
+
+header img {
+    width: 30px;
+}
+
+header h1 {
+    font-size: 2em;
+    font-family: 'raleaway';
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+section#options {
+    min-height: 55%;
+    background-color: var(--primary-color);
+    border-end-start-radius: 100px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.205);
+}
+
+/* Estilos das opções de perfil */
+
+section#options > section#profile-opt > div#profile {
+    height: 2.3em;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+section#options > section#profile-opt > p {
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+    margin-left: 50px;
+    color: rgba(255, 255, 255, 0.658);
+}
+
+section#options > section#profile-opt > p img {
+    width: 18px;
+}
+
+#profile > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: 2px solid var(--highlight-color2);
+}
+
+#profile > span {
+    padding: 4px;
+}
+
+/* Estilos das opções de saldo */
+
+section#options > section#balance-opt {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+section#options > section#balance-opt > div#balance-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 30px 0px 0px 70px;
+    padding: 20px;
+    width: 18em;
+    height: 10em;
+    background-color: #3a4a63;
+    box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+}
+
+div#balance-container div {
+    display: flex;
+    align-items: center;
+    
+}
+
+div#balance-container span#balance {
+    display: inline-block;
+    min-width: 6em;
+    min-height: 0.5em;
+    padding: 2px;
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    border-radius: 5px;
+}
+
+div#balance-container img#balance-visibility {
+    margin-left: 5px;
+}
+
+section#options > section#balance-opt > div#transaction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+div#transaction-container > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20em;
+    height: 11em;
+    padding: 10px;
+    background-color: #3a4a63;
+    box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+}
+
+form > div {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 5px;
+}
+
+form label {
+    width: 3em;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    width: 18em;
+    height: 1.8em;
+}
+
+input#value {
+    width: 7em;
+    height: 1.8em;
+}
+
+button {
+    width: 7em;
+    height: 2em;
+    margin: auto;
+}
+
+/* Transações */
+
+section#transactions {
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+    font-family: 'raleaway';
+    overflow-y: scroll;
+}
+
+section#transactions > .transaction-container {
+    color: black;
+    margin: 8px;
+    border: 1px solid rgb(49, 49, 49);
+}
+
+section#transactions > .transaction-container > .transaction-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom, #FC5175, #F45C3C, #EE6A10);
+}
+
+.transaction-header .transaction-title {
+    font-size: 1em;
+    font-weight: 300;
+    color: white;
+}
+
+.transaction-header .transaction-opt-container {
+    display: flex;
+    gap: 3px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.transaction-opt-container .transaction-opt-icon {
+    width: 20px;
+    transition: opacity .3s ease;
+}
+
+.transaction-header .transaction-opt-container .done {
+    background-color: #74f169;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.transaction-header .transaction-opt-container .cancel {
+    background-color: #db3737;
+    opacity: 0;
+    pointer-events: none;
+}
+
+section#transactions > .transaction-container > div {
+    padding: 5px;
+}
+
+section#transactions > .transaction-container label {
+    font-weight: 500;
+}
+
+section#transactions > .transaction-container input {
+    margin-left: 5px;
+    border: none;
+}
+
+
+
+/* Rodapé */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #b81336;
+}
